@@ -6,7 +6,7 @@
     >
       <v-list>
         <v-list-item
-          prepend-avatar="src/assets/logo.svg"
+          prepend-avatar="https://img-bed-for-md.oss-cn-shanghai.aliyuncs.com/img/logo1.jpg"
           title="alchemy"
           subtitle="Hello world!"
         ></v-list-item>
@@ -15,19 +15,39 @@
       <v-divider></v-divider>
 
       <v-list density="compact" nav>
-        <v-list-item prepend-icon="mdi-folder" title="Records" value="myfiles"></v-list-item>
-        <v-list-item prepend-icon="mdi-email" title="Inbox" value="shared"></v-list-item>
-        <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
-        <v-list-item prepend-icon="mdi-information" title="About" value="about"></v-list-item>
+          <v-list-item
+            v-for="item in navItems"
+            :key="item.title"
+            :prepend-icon="item.icon"
+            :title="item.title"
+            @click="navClick(item.path)"
+          >
+          </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <HelloWorld />
+        <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue'
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
+  const navItems = ref([
+    { title: "Records", path: "/Records", icon: "mdi-folder" },
+    { title: "Inbox", path: "/Inbox", icon: "mdi-email" },
+    { title: "Starred", path: "/Starred", icon: "mdi-star" },
+    { title: "Setting", path: "/Setting", icon: "mdi-cog" },
+    { title: "About", path: "/About", icon: "mdi-information" },
+  ]);
+
+  function navClick(this: any, path: string) {
+    router.push(path);
+  }
+
 </script>
