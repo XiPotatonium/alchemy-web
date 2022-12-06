@@ -1,7 +1,11 @@
 <template>
-    <v-container>
-        <FileExplorer/>
-    </v-container>
+  <v-container>
+    <h1>Records</h1>
+
+    <div class="py-4" />
+
+    <FileExplorer/>
+  </v-container>
 </template>
 
 <script setup lang="ts">

@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
+    "axios": "^1.2.0",
     "roboto-fontface": "*",
+    "vite-plugin-mock": "^2.9.6",
     "vue": "^3.2.38",
     "vue-router": "4",
     "vuetify": "^3.0.0",
@@ -18,6 +20,7 @@
     "@types/node": "^18.11.9",
     "@types/webfontloader": "^1.6.35",
     "@vitejs/plugin-vue": "^3.0.3",
+    "mockjs": "^1.1.0",
     "typescript": "^4.0.0",
     "vite": "^3.0.9",
     "vite-plugin-vuetify": "^1.0.0-alpha.12",
