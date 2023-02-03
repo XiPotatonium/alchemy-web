@@ -13,7 +13,6 @@ import { createApp } from 'vue'
 // Plugins
 import { registerPlugins } from '@/plugins'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import axios from '@/request';
 
 
 const routes = [

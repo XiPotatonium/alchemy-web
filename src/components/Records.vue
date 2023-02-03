@@ -9,5 +9,8 @@
 </template>
 
 <script setup lang="ts">
-  import FileExplorer from '@/components/FileExplorer.vue'
+import FileExplorer from '@/components/FileExplorer.vue';
+import { onMounted, Ref, ref } from "vue";
+import axios from "axios";
+
 </script>
