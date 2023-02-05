@@ -14,12 +14,12 @@ Mock.mock(
     }
 );
 */
+
 export default [
     {
-        url: "/api/getRecords",
+        url: "/api/lsFiles",
         method: "get",
-        // `options` is actually `MockjsRequestOptions`
-        response: (options: any) => {
+        response: () => {
             var subitems = [
                 // Same as FileInfoProto
                 { ty: "folder", path: ["foo"], ctime: Mock.Random.datetime(), mtime: Mock.Random.datetime() },
@@ -30,7 +30,7 @@ export default [
         },
     },
     {
-        url: "/api/getRecords/:path+",
+        url: "/api/lsFiles/:path+",
         method: "get",
         // `options` is actually `MockjsRequestOptions`
         response: (options: any) => {
@@ -43,4 +43,54 @@ export default [
             return { "path": pathsegs, "subitems": subitems };
         },
     },
+    {
+        url: "/api/getSettings",
+        method: "get",
+        response: () => {
+            return {
+               "theme": "light",
+               "mail_fetch_period": 10     // s
+            }
+        }
+    },
+    {
+        url: "/api/getInfo",
+        method: "get",
+        response: () => {
+            return {
+                "pwd": "/data/homexx/xxx/pydemo",
+                // "doc": "# " + Mock.Random.title() + `
+                //     \n\n[Github repo](https://github.com/XiPotatonium/alchemy-web)\n\n
+                // ` + Mock.Random.paragraph() + "\n\n" + Mock.Random.cparagraph() + "\n"
+            }
+        }
+    },
+    {
+        url: "/api/getMails",
+        method: "get",
+        response: {
+            "mails|7": [{
+                "id": "@guid",
+                "title": "@title",
+                "text": "@paragraph \n @cparagraph",
+                "time": "@datetime",
+                "sender": {
+                    "tag": "@word",
+                    "category|1": ["alchemy.runner.Trainer", "alchemy.runner.Tester"],
+                    "ctime": "@datetime",
+                    "dir": "./records/@word/@word/@word"
+                },
+                "level|1": ["error", "warning", "info", "debug", "other"],
+                "read": "@boolean",
+            }]
+        }
+    },
+    {
+        url: "/api/setSettings",
+        method: "post",
+        // `options` is actually `MockjsRequestOptions`
+        response: (options: any) => {
+            return options.body;
+        }
+    }
 ]

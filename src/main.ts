@@ -19,9 +19,6 @@ const routes = [
   { path: '/', redirect: '/Records' },
   { path: '/Records', component: () => import('./components/Records.vue'), },
   { path: '/Inbox', component: () => import('./components/Inbox.vue'), },
-  { path: '/Starred', component: () => import('./components/Starred.vue'), },
-  { path: '/Setting', component: () => import('./components/Setting.vue'), },
-  { path: '/About', component: () => import('./components/About.vue'), },
 ]
 
 // 3. 创建路由实例并传递 `routes` 配置
